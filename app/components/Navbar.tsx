@@ -97,7 +97,7 @@ export default function Navbar() {
             />
 
             {!showSearch && (
-              <div className="flex md:hidden transition-opacity duration-300">
+              <div className="flex cursor-pointer md:hidden transition-opacity duration-300">
                 <IconButton
                   iconSrc="/icons/search.png"
                   activeIconSrc="/icons/search.png"
@@ -112,7 +112,7 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 items-center">
-          <IconButton href="/" iconSrc="/icons/home.png" activeIconSrc="/icons/home-hover.png" altText="Home" />
+          <p className="cursor-pointer"><IconButton href="/" iconSrc="/icons/home.png" activeIconSrc="/icons/home-hover.png" altText="Home" /></p>
           <IconButton href="/about" iconSrc="/icons/video.png" activeIconSrc="/icons/video-hover.png" altText="Video" />
           <IconButton href="/groups" iconSrc="/icons/group.png" activeIconSrc="/icons/group-hover.png" altText="Groups" />
         </div>
@@ -150,7 +150,6 @@ export default function Navbar() {
 
       {isOpenMenu && (
   <div className="absolute left-1/2 mt-4 w-94 bg-green-800 rounded-lg shadow-lg flex flex-col overflow-hidden md:hidden -translate-x-1/2">
-     <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/" iconSrc="/icons/home.png" activeIconSrc="/icons/home-hover.png" altText="Home" />Home</p>
      <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/about" iconSrc="/icons/video.png" activeIconSrc="/icons/video-hover.png" altText="Video" />Video</p>
      <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/groups" iconSrc="/icons/group.png" activeIconSrc="/icons/group-hover.png" altText="Groups" />Group</p>
   </div>
