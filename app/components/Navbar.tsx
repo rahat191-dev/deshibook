@@ -124,20 +124,13 @@ export default function Navbar() {
           <IconButton href="/notification" iconSrc="/icons/notification.png" activeIconSrc="/icons/notification-hover.png" altText="Notification" />
 
           <div className="relative">
-  <IconButton
-    iconSrc="/icons/profile.png"
-    activeIconSrc="/icons/profile-hover.png"
-    altText="Profile"
-    onClick={toggleProfile}
-  />
-
-  {isOpenProfile && (
-    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-40 bg-green-800 rounded-lg shadow-lg flex flex-col overflow-hidden">
-      <Link href="/login" className="px-4 py-2 hover:bg-green-700 text-white text-center" onClick={() => setIsOpenProfile(false)}>Login</Link>
-      <Link href="/signup" className="px-4 py-2 hover:bg-green-700 text-white text-center" onClick={() => setIsOpenProfile(false)}>Signup</Link>
-    </div>
-  )}
-</div>
+            <IconButton
+              iconSrc="/icons/profile.png"
+              activeIconSrc="/icons/profile-hover.png"
+              altText="Profile"
+              onClick={toggleProfile}
+            />
+          </div>
 
 
           {/* Mobile Hamburger */}
@@ -147,11 +140,19 @@ export default function Navbar() {
         </div>
       </div>
 
+      {isOpenProfile && (
+        <div className="absolute mt-4 w-94 bg-green-800 rounded-lg shadow-lg flex flex-col overflow-hidden
+  left-1/2 -translate-x-1/2 md:left-auto md:right-1 md:translate-x-0">
+          <Link href="/login" className="p-2 hover:bg-green-700 text-white text-center" onClick={() => setIsOpenProfile(false)}>Login</Link>
+          <Link href="/signup" className="p-2 hover:bg-green-700 text-white text-center" onClick={() => setIsOpenProfile(false)}>Signup</Link>
+        </div>
+      )}
+
       {isOpenMenu && (
   <div className="absolute left-1/2 mt-4 w-94 bg-green-800 rounded-lg shadow-lg flex flex-col overflow-hidden md:hidden -translate-x-1/2">
-    <IconButton href="/" iconSrc="/icons/home.png" activeIconSrc="/icons/home-hover.png" altText="Home" />
-    <IconButton href="/about" iconSrc="/icons/video.png" activeIconSrc="/icons/video-hover.png" altText="Video" />
-    <IconButton href="/groups" iconSrc="/icons/group.png" activeIconSrc="/icons/group-hover.png" altText="Groups" />
+     <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/" iconSrc="/icons/home.png" activeIconSrc="/icons/home-hover.png" altText="Home" />Home</p>
+     <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/about" iconSrc="/icons/video.png" activeIconSrc="/icons/video-hover.png" altText="Video" />Video</p>
+     <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/groups" iconSrc="/icons/group.png" activeIconSrc="/icons/group-hover.png" altText="Groups" />Group</p>
   </div>
 )}
 
