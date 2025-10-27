@@ -38,7 +38,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="bg-green-600 hover:bg-green-500 text-white py-2 rounded-md transition"
+            className="bg-green-600 hover:bg-green-500 text-white py-2 rounded-md transition cursor-pointer"
           >
             Login
           </button>

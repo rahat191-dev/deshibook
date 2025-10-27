@@ -12,7 +12,6 @@ export default function Navbar() {
   const searchRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
-  // 🔹 Close menus on outside click
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -26,7 +25,6 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // 🔸 Icon Button component
   const IconButton = ({
     href,
     iconSrc,
@@ -57,7 +55,6 @@ export default function Navbar() {
     return href ? <Link href={href}>{button}</Link> : button;
   };
 
-  // 🔹 Handle menu toggle: close other menu if open
   const toggleMenu = () => {
     setIsOpenMenu(!isOpenMenu);
     if (!isOpenMenu) setIsOpenProfile(false);
@@ -72,13 +69,11 @@ export default function Navbar() {
     <nav className="bg-green-900 text-white p-4 relative z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
 
-        {/* Left Side */}
         <div className="flex items-center gap-1.5">
           <Link href="/">
             <img src="/icons/brand.png" alt="Brand" className="w-8 h-8" />
           </Link>
 
-          {/* Search Box */}
           <div
             ref={searchRef}
             className={`flex items-center rounded-full px-2 py-1 transition-all duration-300 ${
@@ -110,14 +105,12 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 items-center">
-          <p className="cursor-pointer"><IconButton href="/" iconSrc="/icons/home.png" activeIconSrc="/icons/home-hover.png" altText="Home" /></p>
-          <IconButton href="/about" iconSrc="/icons/video.png" activeIconSrc="/icons/video-hover.png" altText="Video" />
+          <IconButton href="/" iconSrc="/icons/home.png" activeIconSrc="/icons/home-hover.png" altText="Home" />
+          <IconButton href="/video" iconSrc="/icons/video.png" activeIconSrc="/icons/video-hover.png" altText="Video" />
           <IconButton href="/groups" iconSrc="/icons/group.png" activeIconSrc="/icons/group-hover.png" altText="Groups" />
         </div>
 
-        {/* Right Buttons */}
         <div className="flex space-x-2 items-center relative">
           <IconButton href="/post" iconSrc="/icons/post.png" activeIconSrc="/icons/post-hover.png" altText="Post" />
           <IconButton href="/chat" iconSrc="/icons/chat.png" activeIconSrc="/icons/chat-hover.png" altText="Chat" />
@@ -132,8 +125,6 @@ export default function Navbar() {
             />
           </div>
 
-
-          {/* Mobile Hamburger */}
           <div className="md:hidden relative">
             <IconButton iconSrc="/icons/menu.png" activeIconSrc="/icons/menu-hover.png" altText="Menu" onClick={toggleMenu} />
           </div>
@@ -143,19 +134,32 @@ export default function Navbar() {
       {isOpenProfile && (
         <div className="absolute mt-4 w-94 bg-green-800 rounded-lg shadow-lg flex flex-col overflow-hidden
   left-1/2 -translate-x-1/2 md:left-auto md:right-1 md:translate-x-0">
-          <Link href="/login" className="p-2 hover:bg-green-700 text-white text-center" onClick={() => setIsOpenProfile(false)}>Login</Link>
-          <Link href="/signup" className="p-2 hover:bg-green-700 text-white text-center" onClick={() => setIsOpenProfile(false)}>Signup</Link>
+          <Link href="/login" className="p-2 hover:bg-green-700 text-white" onClick={() => setIsOpenProfile(false)}>Login</Link>
+          <Link href="/signup" className="p-2 hover:bg-green-700 text-white" onClick={() => setIsOpenProfile(false)}>Signup</Link>
         </div>
       )}
 
       {isOpenMenu && (
   <div className="absolute left-1/2 mt-4 w-94 bg-green-800 rounded-lg shadow-lg flex flex-col overflow-hidden md:hidden -translate-x-1/2">
-     <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/about" iconSrc="/icons/video.png" activeIconSrc="/icons/video-hover.png" altText="Video" />Video</p>
-     <p className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700"><IconButton href="/groups" iconSrc="/icons/group.png" activeIconSrc="/icons/group-hover.png" altText="Groups" />Group</p>
+    <Link
+      href="/video"
+      className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700 text-white"
+      onClick={() => setIsOpenMenu(false)}
+    >
+      <img src="/icons/video.png" alt="Video" className="w-5 h-5" />
+      Video
+    </Link>
+
+    <Link
+      href="/groups"
+      className="cursor-pointer flex items-center gap-2 p-2 hover:bg-green-700 text-white"
+      onClick={() => setIsOpenMenu(false)}
+    >
+      <img src="/icons/group.png" alt="Groups" className="w-5 h-5" />
+      Groups
+    </Link>
   </div>
 )}
-
-
     </nav>
   );
 }
